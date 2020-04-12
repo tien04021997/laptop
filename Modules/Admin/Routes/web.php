@@ -12,5 +12,13 @@
 */
 
 Route::prefix('admin')->group(function() {
-    Route::get('/', 'AdminController@index');
+    Route::get('/', 'AdminController@index')->name('admin.home');
+
+    /* Danh mục sản phẩm */
+    Route::group(['prefix' => 'CategoryProduct'], function (){
+        Route::get('/', 'AdminCategoryProductController@index')->name('admin.get.list.CategoryProduct');
+
+        Route::get('/create', 'AdminCategoryProductController@create')->name('admin.get.create.CategoryProduct');
+        Route::post('/create', 'AdminCategoryProductController@store');
+    });
 });
