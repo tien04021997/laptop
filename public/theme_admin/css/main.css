@@ -63,3 +63,77 @@ a, a:hover{
 .text-general-list ul li a:hover{
     text-decoration: none;
 }
+.frm-item{
+    border: 1px solid #ccc;
+    background: #fff;
+    margin-bottom: 15px;
+}
+#layoutSidenav_content,
+#layoutSidenav{
+    background: #f5f5f5;
+}
+.frm-title{
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 16px;
+    background-color: #ccd5db;
+    padding: 15px 12px;
+    font-weight: 700;
+}
+.frm-item .form-group{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.frm-item .form-group label{
+    font-size: 14px;
+}
+.frm-item .form-group .form-control{
+    font-size: 14px;
+}
+.form-file.form-control{
+    height: auto;
+}
+.list-button{
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+.list-button > .row{
+    margin-right: -7.5px;
+    margin-left: -7.5px;
+}
+.list-button > .row > div{
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+.list-button button{
+    font-size: 14px;
+    width: 100%;
+    background-color: #2ea1f8 !important;
+    background: linear-gradient(180deg, #2ea1f8, #1990ea) !important;
+    border-color: #1a91eb;
+    padding: 5px 10px;
+}
+.list-button button.btnSync{
+    background-color: #39b54a !important;
+    background: linear-gradient(180deg, #39b54a, #34aa44) !important;
+    border-color: #35a745;
+}
+.form-add > form > .row{
+    margin-left: -7.5px;
+    margin-right: -7.5px;
+}
+.form-add > form > .row > div{
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}
+.list-data-table table{
+    background: #fff;
+}
+.image-form{
+    border: 1px solid #ccc;
+}
+#output_img{
+    width: 100%;
+    height: auto;
+}

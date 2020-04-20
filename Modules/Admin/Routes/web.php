@@ -20,5 +20,10 @@ Route::prefix('admin')->group(function() {
 
         Route::get('/create', 'AdminCategoryProductController@create')->name('admin.get.create.CategoryProduct');
         Route::post('/create', 'AdminCategoryProductController@store');
+
+        Route::get('/update/{id}', 'AdminCategoryProductController@edit')->name('admin.get.update.CategoryProduct');
+        Route::post('/update/{id}', 'AdminCategoryProductController@update');
+
+        Route::get('/{action}/{id}', 'AdminCategoryProductController@action')->name('admin.get.action.CategoryProduct');
     });
 });

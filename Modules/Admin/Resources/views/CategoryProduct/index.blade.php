@@ -24,35 +24,51 @@
             </ul>
         </div>
         <div class="list-data">
-            <div class="card mb-4">
-                <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
-                            </thead>
+            <div class="list-data-table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Tên danh mục</th>
+                            <th>Avatar</th>
+                            <th>Nổi bật</th>
+                            <th>Trạng thái</th>
+                            <th width="10%">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(isset($categoryProduct))
+                        <?php $i = 1 ?>
+                        @foreach($categoryProduct as $key=>$value)
 
-                            <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                            <tr>
+                                <td>{{ ($i) }}</td>
+                                <td>{{ $value->name }}</td>
+                                <td><img src="{{ isset($value->avatar) ? asset($value->avatar) : '' }}" style="width: 60px; height: 60px; object-fit: cover;"/></td>
+                                <td>{{ $value->status }}</td>
+                                <td>{{ $value->active }}</td>
+                                <td>
+                                    <p>
+                                        <a href="{{ route('admin.get.update.CategoryProduct', $value->id) }}" title="Sửa">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                    </p>
+                                    <p>
+                                        <a href="{{ route('admin.get.action.CategoryProduct', ['delete', $value->id]) }}" title="Xóa">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </p>
+                                </td>
+                            </tr>
+                            <?php $i++ ?>
+                        @endforeach
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination-page">
+                {{ $categoryProduct -> links() }}
             </div>
         </div>
     </div>

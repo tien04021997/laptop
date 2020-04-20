@@ -1,7 +1,22 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: DELL
- * Date: 4/12/2020
- * Time: 8:06 PM
- */
+@extends('admin::layouts.master')
+@section('title','Thay đổi thông tin danh mục sản phẩm');
+@section('content')
+    <div class="container-fluid">
+        <div class="text-general clearfix">
+            <div class="text-general-title pull-left">
+                <h3>Danh mục sản phẩm</h3>
+            </div>
+            <div class="text-general-list pull-right">
+                <ul>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Danh sách</a></li>
+                    <li class="breadcrumb-item active">Danh mục sản phẩm</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="form-add">
+            @include('admin::CategoryProduct.form')
+        </div>
+    </div>
+@endsection
