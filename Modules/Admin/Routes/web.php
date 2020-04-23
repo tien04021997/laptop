@@ -24,6 +24,8 @@ Route::prefix('admin')->group(function() {
         Route::get('/update/{id}', 'AdminCategoryProductController@edit')->name('admin.get.update.CategoryProduct');
         Route::post('/update/{id}', 'AdminCategoryProductController@update');
 
+        Route::get('/delete/{id}', 'AdminCategoryProductController@delete')->name('admin.get.delete.CategoryProduct');
+
         Route::get('/{action}/{id}', 'AdminCategoryProductController@action')->name('admin.get.action.CategoryProduct');
     });
 });

@@ -137,3 +137,24 @@ a, a:hover{
     width: 100%;
     height: auto;
 }
+.form-search{
+    background: #fff;
+    padding: 15px 15px;
+    display: block;
+    margin-bottom: 15px;
+}
+.form-search .form-inline{
+    margin-bottom: 0px;
+}
+.form-search .btn{
+    height: calc(1.5em + 0.75rem + 2px);
+    margin-left: 15px;
+}
+.form-search .form-inline .form-control{
+    background: #f5f5f5;
+}
+.error-text{
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}

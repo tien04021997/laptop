@@ -23,6 +23,23 @@
                 </li>
             </ul>
         </div>
+
+        @if ($message = Session::get('notification-delete'))
+            <div id="flash-timeout" class="alert alert-warning alert-block">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ $message }}</strong>
+            </div>
+        @endif
+
+        <div class="form-search clearfix">
+            <form class="form-inline" action="">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tên danh mục" name="name" value="{{ \Request::get('name') }}">
+                </div>
+                <button type="submit" class="btn btn-danger btn-default"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+
         <div class="list-data">
             <div class="list-data-table">
                 <table class="table table-bordered">
@@ -39,14 +56,22 @@
                     <tbody>
                         @if(isset($categoryProduct))
                         <?php $i = 1 ?>
-                        @foreach($categoryProduct as $key=>$value)
+                        @foreach($categoryProduct as $value)
 
                             <tr>
                                 <td>{{ ($i) }}</td>
                                 <td>{{ $value->name }}</td>
                                 <td><img src="{{ isset($value->avatar) ? asset($value->avatar) : '' }}" style="width: 60px; height: 60px; object-fit: cover;"/></td>
-                                <td>{{ $value->status }}</td>
-                                <td>{{ $value->active }}</td>
+                                <td>
+                                    <a href="{{ route('admin.get.action.CategoryProduct',['status', $value->id]) }}" class="badge {{$value->getHot($value->status)['class'] }}">
+                                        {{ $value->getHot($value->status)['name'] }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.get.action.CategoryProduct', ['active', $value->id]) }}" class="badge {{ $value->getActive($value->active)['class'] }}">
+                                        {{ $value->getActive($value->active)['name'] }}
+                                    </a>
+                                </td>
                                 <td>
                                     <p>
                                         <a href="{{ route('admin.get.update.CategoryProduct', $value->id) }}" title="Sửa">
@@ -54,7 +79,7 @@
                                         </a>
                                     </p>
                                     <p>
-                                        <a href="{{ route('admin.get.action.CategoryProduct', ['delete', $value->id]) }}" title="Xóa">
+                                        <a href="{{ route('admin.get.delete.CategoryProduct', $value->id) }}" title="Xóa">
                                             <i class="fas fa-trash-alt"></i>
                                         </a>
                                     </p>
@@ -73,3 +98,10 @@
         </div>
     </div>
 @endsection
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 500);
+</script>

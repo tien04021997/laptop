@@ -16,7 +16,24 @@
         </div>
 
         <div class="form-add">
+            @if ($messageNoti = Session::get('success-update'))
+
+                <div class="alert alert-success alert-block">
+
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+
+                    <strong>{{ $messageNoti }}</strong>
+
+                </div>
+            @endif
             @include('admin::CategoryProduct.form')
         </div>
     </div>
 @endsection
+<script type="text/javascript">
+    window.setTimeout(function() {
+        $(".alert").fadeTo(500, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 500);
+</script>

@@ -1,3 +1,4 @@
+
 <form action="" method="POST" id="myDiv" enctype="multipart/form-data">
     @csrf
     <div class="row">
@@ -12,7 +13,7 @@
                         <input type="text" class="form-control" name="name" value="{{ old('name', isset($categoryProduct->name) ? $categoryProduct->name : '') }}">
                         @if($errors->has('name'))
                             <span class="error-text">
-                            {{$errors->first('name')}}
+                                {{$errors->first('name')}}
                             </span>
                         @endif
                     </div>
@@ -58,6 +59,17 @@
                         </div>
                     </div>
                 </div>
+
+                {{--<div class="frm-item">--}}
+                    {{--<div class="frm-title">--}}
+                        {{--<i class="fas fa-tv"></i> Hiển thị--}}
+                    {{--</div>--}}
+
+                    {{--<div class="form-group">--}}
+                        {{--<input type="checkbox" id="status" name="status" value="{{ old('status', isset($categoryProduct->status) ? 0 : 1) }}">--}}
+                        {{--<label for="status"> Không nổi bật</label>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
 
                 <div class="frm-item">
                     <div class="frm-title">

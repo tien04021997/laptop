@@ -7,15 +7,18 @@ use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use function Psy\debug;
+
 
 class AdminCategoryProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $categoryProduct = CategoryProduct::select('id', 'name', 'avatar', 'active', 'status')->orderByDesc('id')->get();
-        $categoryProduct = CategoryProduct::paginate(15);
+        $categoryProduct = CategoryProduct::select('id', 'name', 'avatar', 'active', 'status')->get();
+        /* Tìm kiếm danh mục sản phẩm */
+        $categoryProduct = CategoryProduct::orderByDesc('id')->paginate(15);
+        if ($request->name) $categoryProduct->where('name','like','%'.$request->name.'%');
+
         $viewData = [
             'categoryProduct' => $categoryProduct,
         ];
@@ -31,7 +34,7 @@ class AdminCategoryProductController extends Controller
     public function store(RequestCategoryProduct $requestCategoryProduct)
     {
         $this->insertOrUpdate($requestCategoryProduct);
-        return redirect()->back();
+        return redirect()->back()->with('success','Thêm thành công');
     }
 
     public function edit($id)
@@ -44,7 +47,7 @@ class AdminCategoryProductController extends Controller
     public function update(RequestCategoryProduct $requestCategoryProduct, $id)
     {
         $this->insertOrUpdate($requestCategoryProduct, $id);
-        return redirect()->back();
+        return redirect()->back()->with('success-update','Cập nhật thành công');
     }
 
     public function insertOrUpdate(RequestCategoryProduct $requestCategoryProduct, $id='')
@@ -84,13 +87,26 @@ class AdminCategoryProductController extends Controller
         return $code;
     }
 
+    public function delete($id)
+    {
+        $categoryProduct = CategoryProduct::find($id);
+        $categoryProduct->delete();
+        return redirect()->back()->with('notification-delete','Xóa bản ghi thành công');
+    }
+
     public function action($action, $id)
     {
         if ($action){
             $categoryProduct = CategoryProduct::find($id);
             switch ($action){
-                case 'delete':
-                    $categoryProduct->delete();
+                case 'active':
+                    $categoryProduct->active = $categoryProduct->active ? 0 : 1;
+                    $categoryProduct->save();
+                    break;
+
+                case 'status':
+                    $categoryProduct->status = $categoryProduct->status ? 0 : 1;
+                    $categoryProduct->save();
                     break;
             }
         }
