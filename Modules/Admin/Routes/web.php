@@ -28,4 +28,12 @@ Route::prefix('admin')->group(function() {
 
         Route::get('/{action}/{id}', 'AdminCategoryProductController@action')->name('admin.get.action.CategoryProduct');
     });
+
+    /* Danh mục tin tức */
+    Route::group(['prefix' => 'CategoryNews'], function (){
+        Route::get('/', 'AdminCategoryNewsController@index')->name('admin.get.list.CategoryNews');
+
+        Route::get('/create', 'AdminCategoryNewsController@create')->name('admin.get.create.CategoryNews');
+        Route::post('/create', 'AdminCategoryNewsController@store');
+    });
 });

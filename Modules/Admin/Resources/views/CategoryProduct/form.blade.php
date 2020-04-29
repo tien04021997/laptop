@@ -60,17 +60,6 @@
                     </div>
                 </div>
 
-                {{--<div class="frm-item">--}}
-                    {{--<div class="frm-title">--}}
-                        {{--<i class="fas fa-tv"></i> Hiển thị--}}
-                    {{--</div>--}}
-
-                    {{--<div class="form-group">--}}
-                        {{--<input type="checkbox" id="status" name="status" value="{{ old('status', isset($categoryProduct->status) ? 0 : 1) }}">--}}
-                        {{--<label for="status"> Không nổi bật</label>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
                 <div class="frm-item">
                     <div class="frm-title">
                         <i class="fas fa-cloud-upload-alt"></i> Đăng bài

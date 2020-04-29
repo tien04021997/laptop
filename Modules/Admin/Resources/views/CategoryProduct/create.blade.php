@@ -9,7 +9,7 @@
             <div class="text-general-list pull-right">
                 <ul>
                     <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Danh sách</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.get.create.CategoryProduct') }}">Danh sách</a></li>
                     <li class="breadcrumb-item active">Danh mục sản phẩm</li>
                 </ul>
             </div>
